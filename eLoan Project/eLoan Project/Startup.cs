@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using eLoan_Project.Data;
 
 namespace eLoan_Project
 {
@@ -25,8 +26,13 @@ namespace eLoan_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            
+            services.AddDbContext<AddressContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AddressContext")));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationContext")));
+            services.AddDbContext<BankContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankContext")));
+            services.AddDbContext<CustomerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CustomerContext")));
+            services.AddDbContext<LoanContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LoanContext")));
+            services.AddDbContext<LoginContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LoginContext")));
+            services.AddDbContext<ProfileContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProfileContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
