@@ -5,4 +5,11 @@
     <RootNamespace>eLoan_Project</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Models\Class.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Loan Mgmt Engine\" />
+  </ItemGroup>
 </Project>
