@@ -35,7 +35,7 @@ create table customer(
 );
 
 create table profile(
-  profile_id    varchar(255)    not null,
+  profile_id    int             not null,
   first_name    varchar(30)     not null,
   last_name     varchar(30)     not null,
   email         varchar(30)     not null,
