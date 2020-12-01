@@ -32,6 +32,22 @@ namespace eLoan_Project.Controllers
         {
             return View();
         }
+        public IActionResult UserHome()
+        {
+            return View();
+        }
+        public IActionResult LoanApp()
+        {
+            return View();
+        }
+        public IActionResult Account()
+        {
+            return View();
+        }
+        public IActionResult Loans()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
