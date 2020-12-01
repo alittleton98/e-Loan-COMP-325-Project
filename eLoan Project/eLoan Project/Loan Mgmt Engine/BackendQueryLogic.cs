@@ -5,6 +5,10 @@ namespace eLoan_Project.LoanMgmtEngine
     {
         public BackendQueryLogic()
         {
+            void testDatabase()
+            {
+                
+            }
         }
     }
 }
