@@ -15,9 +15,9 @@ namespace eLoan_Project.Data
 
             var testTables = new TestTable[]
             {
-                new TestTable{Id=41177, FirstName = "Andrew", Birthday = DateTime.Today},
-                new TestTable{Id=99999, FirstName = "Waffles", Birthday = DateTime.Today},
-                new TestTable{Id=61073, FirstName = "Isabella", Birthday = DateTime.Today}
+                new TestTable{Id=41177, FirstName = "Andrew"},
+                new TestTable{Id=99999, FirstName = "Waffles"},
+                new TestTable{FirstName = "Isabella"}
             };
 
             context.testTables.AddRange(testTables);

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,13 +17,27 @@ namespace eLoan_Project
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            Trace.WriteLine("Entered main");
+            //CreateHostBuilder(args).Build().Run();
             var host = CreateHostBuilder(args).Build();
 
-            CreateDbIfNotExists(host);
+            SeedDB(host);
+            Trace.WriteLine("Database seeded");
 
             host.Run();
         }
+
+        private static void SeedDB(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<eLoanContext>();
+                context.Database.EnsureCreated();
+                SeedTestData.Initialize(context);
+            }
+        }
+        
 
         private static void CreateDbIfNotExists(IHost host)
         {
@@ -33,14 +48,15 @@ namespace eLoan_Project
                 {
                     var context = services.GetRequiredService<eLoanContext>();
                     context.Database.EnsureCreated();
-                    
-                    
                     SeedTestData.Initialize(context);
+                    Trace.WriteLine("Database created and data seeded");
+
                 }
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred creating the DB.");
+                    Trace.WriteLine("Database failed to seed");
                 }
             }
         }
