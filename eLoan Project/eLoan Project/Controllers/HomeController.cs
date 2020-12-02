@@ -20,12 +20,36 @@ namespace eLoan_Project.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("../eLoan_Views/Index");
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return View("../eLoan_Views/Privacy");
+        }
+
+        public IActionResult Registration()
+        {
+            return View("../eLoan_Views/Registration");
+        }
+        public IActionResult UserHome(string firstName, string lastName)
+        {
+            firstName = "Drew";
+            //pass first name to the UserHome view 
+            ViewData["User First Name"] = firstName;
+            return View("../eLoan_Views/UserHome");
+        }
+        public IActionResult LoanApp()
+        {
+            return View("../eLoan_Views/LoanApp");
+        }
+        public IActionResult Account()
+        {
+            return View("../eLoan_Views/Account");
+        }
+        public IActionResult Loans()
+        {
+            return View("../eLoan_Views/Loans");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
