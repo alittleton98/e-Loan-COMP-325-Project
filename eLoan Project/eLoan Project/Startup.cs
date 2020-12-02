@@ -32,6 +32,7 @@ namespace eLoan_Project
             services.AddDbContext<LoanContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LoanContext")));
             services.AddDbContext<LoginContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LoginContext")));
             services.AddDbContext<ProfileContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProfileContext")));
+            services.AddDbContext<TestTableContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestTableContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
