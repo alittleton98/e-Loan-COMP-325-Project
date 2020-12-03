@@ -22,54 +22,76 @@ namespace eLoan_Project.Loan_Mgmt_Engine
     //Fulfills CRUD
     public class eLoan_CRUD
     {
-        
-        //Read view forms 
 
-        public static void GatherAddressForm(/*add params as necessary*/)
+        //Read view forms
+        /*Parameters from the form to be place in database fields follow this convention: fieldname1=xxxx, fieldname2=yyyyyy, etc.*/
+        public static Address GatherAddressForm(/*add params as necessary*/)
         {
+            var AddressForm = new Address {/*Parameters from the form to be place in database fields*/ };
             //code
+            return AddressForm;
         }
-        public static void GatherApplicationForm(/*add params as necessary*/)
+        public static Application GatherApplicationForm(/*add params as necessary*/)
         {
+            var ApplciationForm = new Application {/*Parameters from the form to be place in database fields*/};
             //code
+            return ApplciationForm;
         }
-        public static void GatherProfileForm(/*add params as necessary*/)
+        public static Profile GatherProfileForm(/*add params as necessary*/)
         {
+            var ProfileForm = new Profile {/*Parameters from the form to be place in database fields*/};
             //code
+            return ProfileForm;
         }
-        public static void GatherLoginForm(/*add params as necessary*/)
+        public static Login GatherLoginForm(/*add params as necessary*/)
         {
+            var LoginForm = new Login {/*Parameters from the form to be place in database fields*/};
             //code
+            return LoginForm;
         }
 
-        //Create 
-        public static void createAddressEntry(eLoanContext context, Address[] address)
+        //Create Entity
+        public static void createAddressEntry(eLoanContext context, Address address)
         {
-
+            context.Database.EnsureCreated();
+            context.Add(address);
+            context.SaveChanges();
         }
-        public static void createApplicationEntry(eLoanContext context, Address[] address)
+        public static void createApplicationEntry(eLoanContext context, Application application)
         {
-
+            context.Database.EnsureCreated();
+            context.applications.Add(application);
+            context.SaveChanges();
         }
-        public static void createBankEntry(eLoanContext context, Address[] address)
+        public static void createBankEntry(eLoanContext context, Bank bank)
         {
-
+            context.Database.EnsureCreated();
+            context.banks.Add(bank);
+            context.SaveChanges();
         }
-        public static void createCustomerEntry(eLoanContext context, Address[] address)
+        public static void createCustomerEntry(eLoanContext context, Customer customer)
         {
-
+            context.Database.EnsureCreated();
+            context.customers.Add(customer);
+            context.SaveChanges();
         }
-        public static void createLoanEntry(eLoanContext context, Address[] address)
+        public static void createLoanEntry(eLoanContext context, Loan loan)
         {
-
+            context.Database.EnsureCreated();
+            context.loans.Add(loan);
+            context.SaveChanges();
         }
-        public static void createLoginEntry(eLoanContext context, Address[] address)
+        public static void createLoginEntry(eLoanContext context, Login login)
         {
-
+            context.Database.EnsureCreated();
+            context.logins.Add(login);
+            context.SaveChanges();
         }
-        public static void createProfileEntry(eLoanContext context, Address[] address)
+        public static void createProfileEntry(eLoanContext context, Profile profile)
         {
-
+            context.Database.EnsureCreated();
+            context.profiles.Add(profile);
+            context.SaveChanges();
         }
         
 
