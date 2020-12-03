@@ -25,13 +25,8 @@ namespace eLoan_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<AddressContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AddressContext")));
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationContext")));
-            services.AddDbContext<BankContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankContext")));
-            services.AddDbContext<CustomerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CustomerContext")));
-            services.AddDbContext<LoanContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LoanContext")));
-            services.AddDbContext<LoginContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LoginContext")));
-            services.AddDbContext<ProfileContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProfileContext")));
+            
+            services.AddDbContext<eLoanContext>(options => options.UseSqlServer(Configuration.GetConnectionString("eLoanContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
