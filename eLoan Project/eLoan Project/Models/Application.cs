@@ -12,6 +12,7 @@ namespace eLoan_Project.Models
             FINISHED
         }
 
+        
         public int application_ID { get; set; }
         public int profile_ID { get; set; }
         public int last4_ssn { get; set; }

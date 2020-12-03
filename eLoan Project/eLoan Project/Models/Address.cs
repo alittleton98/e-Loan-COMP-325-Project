@@ -3,6 +3,7 @@ namespace eLoan_Project.Models
 {
     public class Address
     {
+        
         public int address_ID { get; set; }
         public string street { get; set; }
         public string city { get; set; }
