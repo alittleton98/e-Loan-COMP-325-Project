@@ -22,7 +22,7 @@ namespace eLoan_Project
             var host = CreateHostBuilder(args).Build();
 
             SeedDB(host);
-            Trace.WriteLine("Database seeded");
+            
 
             host.Run();
         }
@@ -32,9 +32,20 @@ namespace eLoan_Project
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<eLoanContext>();
-                context.Database.EnsureCreated();
-                SeedTestData.Initialize(context);
+                try
+                {
+                    var context = services.GetRequiredService<eLoanContext>();
+                    context.Database.EnsureCreated();
+                    SeedTestData.Initialize(context);
+                    Trace.WriteLine("Database seeded");
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB.");
+                    Trace.WriteLine("Error occured with Database seeding");
+                }
+                
             }
         }
         

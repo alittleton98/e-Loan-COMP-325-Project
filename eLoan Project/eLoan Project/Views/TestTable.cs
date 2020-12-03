@@ -9,7 +9,7 @@ namespace eLoan_Project.Models
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
-        public DateTime Birthday { get; set; }
+        //public DateTime Birthday { get; set; }
 
 
     }
