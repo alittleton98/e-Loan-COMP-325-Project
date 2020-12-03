@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\eLoan_Views\TestPage.cshtml" />
+    <Content Remove="Views\eLoan_Views\Test.cshtml" />
+  </ItemGroup>
 </Project>

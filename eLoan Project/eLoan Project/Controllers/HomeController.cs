@@ -52,6 +52,11 @@ namespace eLoan_Project.Controllers
             return View("../eLoan_Views/Loans");
         }
 
+        public IActionResult TestPage()
+        {
+            return View("../eLoan_Views/Test");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
