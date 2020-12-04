@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using eLoan_Project.Data;
+
 
 namespace eLoan_Project
 {
@@ -13,9 +17,60 @@ namespace eLoan_Project
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            Trace.WriteLine("Entered main");
+            //CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            SeedDB(host);
+            
+
+            host.Run();
         }
 
+        private static void SeedDB(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<eLoanContext>();
+                    context.Database.EnsureCreated();
+                    SeedTestData.Initialize(context);
+                    Trace.WriteLine("Database seeded");
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB.");
+                    Trace.WriteLine("Error occured with Database seeding");
+                }
+                
+            }
+        }
+        
+
+        private static void CreateDbIfNotExists(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<eLoanContext>();
+                    context.Database.EnsureCreated();
+                    SeedTestData.Initialize(context);
+                    Trace.WriteLine("Database created and data seeded");
+
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB.");
+                    Trace.WriteLine("Database failed to seed");
+                }
+            }
+        }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

@@ -48,16 +48,88 @@
 				required: true,
 				minlength: 5
 			},
+			reg_firstname: {
+				required: true,
+				minlength: 1
+			},
+			reg_lastname: {
+				required: true,
+				minlength: 1
+			},
 			reg_password_confirm: {
 				required: true,
-				minlength: 5,
+				minlength: 8,
 				equalTo: "#register-form [name=reg_password]"
 			},
 			reg_email: {
 				required: true,
 				email: true
 			},
+			reg_phone: {
+				required: true,
+				minlength: 10,
+				maxlength: 10
+			},
+			reg_address: "required",
+			reg_city: "required",
+			reg_zip: {
+				required: true,
+				minlength: 5,
+				maxlength: 5
+			},
+			reg_state: "required",
+			reg_bank: "required",
+			reg_routing: "required",
+			reg_account: "required",
 			reg_agree: "required",
+		},
+		errorClass: "form-invalid",
+		errorPlacement: function (label, element) {
+			if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
+				element.parent().append(label); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+			}
+			else {
+				label.insertAfter(element); // standard behaviour
+			}
+		}
+	});
+
+	// Form Submission
+	$("#register-form").submit(function () {
+		remove_loading($(this));
+
+		if (options['useAJAX'] == true) {
+			// Dummy AJAX request (Replace this with your AJAX code)
+			// If you don't want to use AJAX, remove this
+			dummy_submit_form($(this));
+
+			// Cancel the normal submission.
+			// If you don't want to use AJAX, remove this
+			return false;
+		}
+	});
+
+	// Loan App Form
+	//----------------------------------------------
+	// Validation
+	$("#LoanApp-form").validate({
+		rules: {
+			loanapp_SSN: {
+				required: true,
+				minlength: 4,
+				maxlength: 4
+			},
+			loanapp_Salary: {
+				required: true,
+				minlength: 1,
+			},
+			loanapp_ExpectedAmnt: {
+				required: true,
+				minlength: 4
+			},
+			loanapp_housing: "required",
+			loanapp_additional: "required",
+			loanapp_agree: "required",
 		},
 		errorClass: "form-invalid",
 		errorPlacement: function (label, element) {
