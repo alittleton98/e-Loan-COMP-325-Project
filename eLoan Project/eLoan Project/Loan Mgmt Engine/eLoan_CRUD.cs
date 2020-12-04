@@ -97,29 +97,33 @@ namespace eLoan_Project.Loan_Mgmt_Engine
 
 
         //Read Database Data
-        public static void ReadAddressData(/*add params as necessary*/)
+        public static Address ReadAddressData(eLoanContext context, int key)
         {
-            //code
+            return context.addresses.Find(key);
         }
-        public static void ReadApplicationData(/*add params as necessary*/)
+        public static Application ReadApplicationData(eLoanContext context, int key, int foreignKey)
         {
-            //code
+            return context.applications.Find(key, foreignKey);
         }
-        public static void ReadBankData(/*add params as necessary*/)
+        public static Bank ReadBankData(eLoanContext context, int key, int foreignKey)
         {
-            //code
+            return context.banks.Find(key, foreignKey);
         }
-        public static void ReadCustomerData(/*add params as necessary*/)
+        public static Customer ReadCustomerData(eLoanContext context, int key, int foreignKey1, int foreignKey2, int foreignKey3)
         {
-            //code
+            return context.customers.Find(key, foreignKey1, foreignKey2, foreignKey3);
         }
-        public static void ReadLoginData(/*add params as necessary*/)
+        public static Loan ReadLoanData(eLoanContext context, int key)
         {
-            //code
+            return context.loans.Find(key);
         }
-        public static void ReadProfileData(/*add params as necessary*/)
+        public static Login ReadLoginData(eLoanContext context, int key, int foreignKey)
         {
-            //code
+            return context.logins.Find(key, foreignKey);
+        }
+        public static Profile ReadProfileData(eLoanContext context, int key, int foreignKey)
+        {
+            return context.profiles.Find(key, foreignKey);
         }
 
         //Update Datatbase Data
