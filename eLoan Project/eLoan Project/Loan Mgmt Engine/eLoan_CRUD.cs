@@ -50,7 +50,7 @@ namespace eLoan_Project.Loan_Mgmt_Engine
             return LoginForm;
         }
 
-        //Create Entity
+        #region Create Database Entity
         public static void createAddressEntry(eLoanContext context, Address address)
         {
             context.Database.EnsureCreated();
@@ -93,10 +93,10 @@ namespace eLoan_Project.Loan_Mgmt_Engine
             context.profiles.Add(profile);
             context.SaveChanges();
         }
-        
 
+        #endregion
 
-        //Read Database Data
+        #region Read Database Data
         public static Address ReadAddressData(eLoanContext context, int key)
         {
             return context.addresses.Find(key);
@@ -126,7 +126,9 @@ namespace eLoan_Project.Loan_Mgmt_Engine
             return context.profiles.Find(key, foreignKey);
         }
 
-        //Update Datatbase Data
+        #endregion
+
+        #region Update Datatbase Data
         public static void UpdateAddressData(/*add params as necessary*/)
         {
             //code
@@ -151,6 +153,8 @@ namespace eLoan_Project.Loan_Mgmt_Engine
         {
             //code
         }
+
+        #endregion
 
         //Delete maybe
 
