@@ -11,49 +11,52 @@ namespace eLoan_Project.LoanMgmtEngine
   public class DecisionMakingScript
   {
     private int application_id;
-        private int profile_id;
+    private int profile_id;
     eLoanContext context;
-        //private eLoanContext context;
 
     public DecisionMakingScript(int ApplicationId, eLoanContext context, int ProfileId)
     {
       application_id = ApplicationId;
       profile_id = ProfileId;
       Application application = ReadApplicationData(context, application_id, profile_id);
-
-      //context = cxt;
     }
-
-    
-    //eLoanContext
-    //eLoanContext tuple = context.applications.Find(application_id);
-    //context.applications.Find(application_id);
 
     public double rent_morgage()
     {
-      return tuple.rent_morgage_expense;
+      // To fetch from the form but it currently doesn't
+      // return application.rent_morgage_expense;
+      return 200;
     }
 
     public double monthly_salary()
     {
-      return tuple.monthly_salary;
+      // To fetch from the form but it currently doesn't
+      // return application.monthly_salary;
+      return 1000;
     }
 
     public double additional_expense()
     {
-      return tuple.additional_expense;
+      // To fetch from the form but it currently doesn't
+      // return application.additional_expense;
+      return 250;
     }
 
     public double amount_requested()
     {
-      return tuple.amount_requested;
+      // To fetch from the form but it currently doesn't
+      // return application.amount_requested;
+      return 24000;
     }
 
     public int tenure_in_months()
     {
-      return tuple.tenure_in_months;
+      // To fetch from the form but it currently doesn't
+      // return application.tenure_in_months;
+      return 24;
     }
 
+    // Controller to call this method to check decision
     public Boolean decision()
     {
       double monthly_salary = this.monthly_salary();
