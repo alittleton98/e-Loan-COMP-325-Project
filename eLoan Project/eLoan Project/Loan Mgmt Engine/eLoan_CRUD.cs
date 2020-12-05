@@ -20,7 +20,7 @@ namespace eLoan_Project.Loan_Mgmt_Engine
     }
 
     //Fulfills CRUD
-    public class eLoan_CRUD
+    public static class eLoan_CRUD
     {
 
         //Read view forms

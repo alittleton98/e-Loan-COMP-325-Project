@@ -4,23 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using eLoan_Project.Data;
 using eLoan_Project.Models;
+using static eLoan_Project.Loan_Mgmt_Engine.eLoan_CRUD;
 
 namespace eLoan_Project.LoanMgmtEngine
 {
   public class DecisionMakingScript
   {
     private int application_id;
-    //private eLoanContext context;
+        private int profile_id;
+    eLoanContext context;
+        //private eLoanContext context;
 
-    public DecisionMakingScript(int ApplicationId, eLoanContext context)
+    public DecisionMakingScript(int ApplicationId, eLoanContext context, int ProfileId)
     {
       application_id = ApplicationId;
+      profile_id = ProfileId;
+      Application application = ReadApplicationData(context, application_id, profile_id);
+
       //context = cxt;
     }
 
-    //eLoanContext context;
+    
     //eLoanContext
-    eLoanContext tuple = context.applications.Find(application_id);
+    //eLoanContext tuple = context.applications.Find(application_id);
     //context.applications.Find(application_id);
 
     public double rent_morgage()
@@ -63,7 +69,7 @@ namespace eLoan_Project.LoanMgmtEngine
         return false;
       }
 
-      double expense_percentage = (total_expenses/monthly_salary) * 100
+            double expense_percentage = (total_expenses / monthly_salary) * 100;
       
       // Total expense in percentage should be lesser than 60.00
       if (expense_percentage <= 60.00)
@@ -107,13 +113,13 @@ namespace eLoan_Project.LoanMgmtEngine
       double additional_expense = this.additional_expense();
 
       double total_expenses = rent_morgage + additional_expense;
-      double expense_percentage = (total_expenses/monthly_salary) * 100
-      
+            double expense_percentage = (total_expenses / monthly_salary) * 100;
+
       // Interest Rate is expense_percentage/10 
       // Ie if expense_percentage compared to savings is 30% the interest rate will be 3
       // If expense_percentage is 55% of total income, the rate is higher 5.5%
       // In short: The more a user has saved the lesser the interest rate.
-      return expense_percentage/10
+            return expense_percentage / 10;
     }
   }
 }
