@@ -113,7 +113,7 @@ namespace eLoan_Project.LoanMgmtEngine
       // Ie if expense_percentage compared to savings is 30% the interest rate will be 3
       // If expense_percentage is 55% of total income, the rate is higher 5.5%
       // In short: The more a user has saved the lesser the interest rate.
-      return expense_percentage/10
+      return expense_percentage/10;
     }
   }
 }
