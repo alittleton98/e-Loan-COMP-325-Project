@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using eLoan_Project.Models;
+using eLoan_Project.Data;
+using static eLoan_Project.Loan_Mgmt_Engine.eLoan_CRUD;
 
 namespace eLoan_Project.Controllers
 {
@@ -41,6 +43,35 @@ namespace eLoan_Project.Controllers
         }
         public IActionResult LoanApp()
         {
+            return View("../eLoan_Views/LoanApp");
+        }
+
+        public IActionResult SaveLoanApp(Application application)
+        {
+
+            //eLoanContext context = new;
+          
+            Application app = new Application();
+            app.profile_ID = 1;
+            app.loanState = "APP_SUBMITTED";
+            app.additional_expense = application.additional_expense;
+            app.last4ssn = application.last4ssn;
+            app.employee_name = application.employee_name;
+            app.monthly_salary = application.monthly_salary;
+            app.rent_mortgage_expense = application.rent_mortgage_expense;
+            app.additional_expense = application.additional_expense;
+            app.amount_requested = application.amount_requested;
+            app.tenure_in_months = application.tenure_in_months;
+            DateTime today = DateTime.Today;
+            app.application_date = today;
+
+            //createApplicationEntry(context, app);
+
+            //context.Database.EnsureCreated();
+            //context.Add(application);
+            //context.SaveChanges();
+
+            //LoanMgmtEngine.DecisionMakingScript()
             return View("../eLoan_Views/LoanApp");
         }
         public IActionResult Account()
