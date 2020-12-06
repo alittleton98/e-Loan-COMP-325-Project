@@ -1,4 +1,5 @@
-﻿
+﻿@model eLoan_Project.Models.Application
+
 @{
     ViewData["Title"] = "Registration";
 }
@@ -17,76 +18,89 @@
 </head>
 
 <!-- REGISTRATION FORM -->
-<div class="text-center" style="padding:50px 0">
-    <div class="logo">Register For A Loan</div>
-    <!-- Main Form -->
-    <div class="login-form-1">
-        <form id="LoanApp-form" class="text-left">
-            <div class="login-form-main-message"></div>
-            <div class="main-login-form">
-                <div class="login-group">
-                    <div class="form-group">
-                        <label for="loanapp_SSN" class="sr-only">Last 4 Digits of SSN</label>
-                        <input type="text" class="form-control" id="loanapp_SSN" name="loanapp_SSN" placeholder="Last 4 Digits of SSN">
-                    </div>
-                    <div class="form-group">
-                        <label for="loanapp_Salary" class="sr-only">Monthly Salary</label>
-                        <input type="text" class="form-control" id="loanapp_Salary" name="loanapp_Salary" placeholder="Monthly Salary">
-                    </div>
-                    <div class="form-group">
-                        <label for="loanapp_housing" class="sr-only">Rent/Mortgage Expense</label>
-                        <input type="text" class="form-control" id="loanapp_housing" name="loanapp_housing" placeholder="Rent/Mortgage Expense">
-                    </div>
-                    <div class="form-group">
-                        <label for="loanapp_additional" class="sr-only">Additional Expense</label>
-                        <input type="text" class="form-control" id="loanapp_additional" name="loanapp_additional" placeholder="Additional Expense">
-                    </div>
-                    <div class="form-group login-group-checkbox">
-                        <input type="radio" class="" name="loanapp_length" id="24" placeholder="username">
-                        <label for="24">24 Months</label>
+@using (Html.BeginForm("SaveLoanApp", "Home", FormMethod.Post))
+{
+    <div class="text-center" style="padding:50px 0">
+        <div class="logo">Register For A Loan</div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form id="LoanApp-form" class="text-left">
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.last4ssn, new { @class = "form-control", @placeholder = "Last 4 SSN" })
+                            @*<label for="loanapp_SSN" class="sr-only">Last 4 Digits of SSN</label>
+            <input type="text" class="form-control" id="loanapp_SSN" name="loanapp_SSN" placeholder="Last 4 Digits of SSN">*@
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.monthly_salary, new { @class = "form-control", @placeholder = "Monthly Salary" })
+                            @*<label for="loanapp_Salary" class="sr-only">Monthly Salary</label>
+            <input type="text" class="form-control" id="loanapp_Salary" name="loanapp_Salary" placeholder="Monthly Salary">*@
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.rent_mortgage_expense, new { @class = "form-control", @placeholder = "Rent/Mortgage" })
+                            @*<label for="loanapp_housing" class="sr-only">Rent/Mortgage Expense</label>
+            <input type="text" class="form-control" id="loanapp_housing" name="loanapp_housing" placeholder="Rent/Mortgage Expense">*@
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.additional_expense, new { @class = "form-control", @placeholder = "Additional Expense" })
+                            @*<label for="loanapp_additional" class="sr-only">Additional Expense</label>
+            <input type="text" class="form-control" id="loanapp_additional" name="loanapp_additional" placeholder="Additional Expense">*@
+                        </div>
+                        <div class="form-group login-group-checkbox">
+                            @Html.TextBoxFor(model => model.tenure_in_months, new { @class = "form-control", @placeholder = "Tenure In Months" })
+                            @*<input type="radio" class="" name="loanapp_length" id="24" placeholder="username">
+            <label for="24">24 Months</label>
 
-                        <input type="radio" class="" name="loanapp_length" id="36" placeholder="username">
-                        <label for="36">36 Months</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="loanapp_ExpectedAmnt" class="sr-only">Desired Amount</label>
-                        <input type="text" class="form-control" id="loanapp_ExpectedAmnt" name="loanapp_ExpectedAmnt" placeholder="Desired Loan Amount">
-                    </div>
+            <input type="radio" class="" name="loanapp_length" id="36" placeholder="username">
+            <label for="36">36 Months</label>*@
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.amount_requested, new { @class = "form-control", @placeholder = "Loan Amount" })
+                            @*<label for="loanapp_ExpectedAmnt" class="sr-only">Desired Amount</label>
+            <input type="text" class="form-control" id="loanapp_ExpectedAmnt" name="loanapp_ExpectedAmnt" placeholder="Desired Loan Amount">*@
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.employee_name, new { @class = "form-control", @placeholder = "Employee Name" })
+                            @*model.loan_state = 'APP_SUBMITTED'*@
+                        </div>
+                            <!--<div class="form-group">
+            <label for="reg_email" class="sr-only">Email</label>
+            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="reg_fullname" class="sr-only">First Name</label>
+            <input type="text" class="form-control" id="" name="reg_firstname" placeholder="First Name">
+        </div>
 
-                    <!--<div class="form-group">
-                        <label for="reg_email" class="sr-only">Email</label>
-                        <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email">
+        <div class="form-group">
+            <label for="reg_fullname" class="sr-only">Last Name</label>
+            <input type="text" class="form-control" id="reg_lastname" name="reg_lastname" placeholder="Last Name">
+        </div>
+
+        @*<div class="form-group login-group-checkbox">
+            <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
+            <label for="male">male</label>
+
+            <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
+            <label for="female">female</label>
+        </div>*@-->
+                            @*<div class="form-group login-group-checkbox">
+                <input type="checkbox" class="" id="reg_agree" name="reg_agree">
+                <label for="reg_agree">i agree with <a href="#">terms</a></label>
+            </div>*@
+                        </div>
+                        <button type="submit" class="login-button" id="loan-app-button" onclick="LoanApp_Click" value="Save"><i class="fa fa-chevron-right"></i></button>
+                        @*<asp:Button ID="Button1" runat="server" Text="Save"
+        onclick="Button1_Click" class="login-button"/><i class="fa fa-chevron-right"></i>*@
                     </div>
-                    <div class="form-group">
-                        <label for="reg_fullname" class="sr-only">First Name</label>
-                        <input type="text" class="form-control" id="" name="reg_firstname" placeholder="First Name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="reg_fullname" class="sr-only">Last Name</label>
-                        <input type="text" class="form-control" id="reg_lastname" name="reg_lastname" placeholder="Last Name">
-                    </div>
-
-                    @*<div class="form-group login-group-checkbox">
-                        <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
-                        <label for="male">male</label>
-
-                        <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
-                        <label for="female">female</label>
-                    </div>*@-->
-
-                    @*<div class="form-group login-group-checkbox">
-                        <input type="checkbox" class="" id="reg_agree" name="reg_agree">
-                        <label for="reg_agree">i agree with <a href="#">terms</a></label>
-                    </div>*@
-                </div>
-                <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <!--<div class="etc-login-form">
-                <p>Already have an account? <a href="/Home/Index">Login here</a></p>
-            </div>-->
-        </form>
+                <!--<div class="etc-login-form">
+                    <p>Already have an account? <a href="/Home/Index">Login here</a></p>
+                </div>-->
+            </form>
+        </div>
+        <!-- end:Main Form -->
     </div>
-    <!-- end:Main Form -->
-</div>
 
+}
